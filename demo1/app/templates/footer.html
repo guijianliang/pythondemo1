@@ -1,0 +1,44 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+
+<head>
+    <link rel="stylesheet" href="{{ url_for('static',filename='css/style.css') }}"/>
+{#    <link rel="stylesheet" href="{{ url_for('static',filename='css/bootstrap-responsive.min.css') }}">#}
+{#    <link rel="stylesheet" href="{{ url_for('static',filename='css/bootstrap.min.css') }}">#}
+<link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet">
+    {% block head %}
+    {% endblock %}
+
+    <style type="text/css">
+
+        #footer{position:absolute;bottom:30px;width:90%;height:80px;}
+
+    </style>
+</head>
+
+<body>
+
+
+{# 这里是需要补充的内容 #}
+{% block content %}
+{% endblock %}
+
+    <div id="footer" class="container">
+        <hr />
+        <footer>
+            <p><a href="http://www.baidu.com/" target="_blank">小甲鱼</a> &copy; Copyright 2018</p>
+        </footer>
+    </div>
+</body>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.1/js/bootstrap.min.js"></script>
+
+{% block js %}
+{% endblock %}
+
+
+</html>
+
+

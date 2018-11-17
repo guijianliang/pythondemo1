@@ -1,0 +1,138 @@
+{% extends "bases2.html" %}
+
+{% block style %}
+    table.gridtable {
+    font-family: verdana, arial, sans-serif;
+    font-size: 11px;
+    color: #333333;
+    border-width: 1px;
+    border-color: #666666;
+    border-collapse: collapse;
+    }
+
+    table.gridtable th {
+    border-width: 1px;
+    padding: 8px;
+    border-style: solid;
+    border-color: #666666;
+    background-color: #dedede;
+    }
+
+    table.gridtable td {
+    border-width: 1px;
+    padding: 8px;
+    border-style: solid;
+    border-color: #666666;
+    background-color: #ffffff;
+    }
+
+    div.books {
+    margin: 0 auto;
+    margin: 50px;
+
+    }
+
+    div.fenye {
+    background: #339bb9;
+    position: relative;
+    margin: 0 auto;
+    width: 30%;
+    height: 30%;
+
+    }
+
+    #fenyetiao {
+
+    }
+{% endblock %}
+{% block head %}
+    {{ super() }}
+    <title>书籍</title>
+{% endblock %}
+
+
+{% block content %}
+    <div class="books">
+        <p> <b>书籍列表</b> 总共有 <b>{{ hh }}</b> 个文件</p>
+        <hr>
+        <table class="gridtable">
+            <thead>
+            <tr>
+                <th>编号</th>
+                <th>文件名称</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for index,item in book_list.items() %}
+                {% if index!='bookListLength' %}
+                    <tr>
+                        <th>{{ index }}</th>
+                        <td><a target="_blank" href="/api/preview/{{ item }}"><b>{{ item }}</b></a></td>
+                    </tr>
+                {% endif %}
+
+
+            {% endfor %}
+            </tbody>
+        </table>
+
+    </div>
+
+    <div class="fenye">
+        <nav aria-label="Page navigation" id="fenyetiao">
+            <ul class="pagination">
+                {% if p >= 2 %}
+                    <li>
+                        <a href="/api/test_books?page={{ p - 1 }}" aria-label="Previous">
+                            <span aria-hidden="true">&laquo;</span>
+                        </a>
+                    </li>
+                {% else %}
+                    <li>
+                        <a href="javascript:return false;" style="opacity: 0.2" aria-label="Previous">
+                            <span aria-hidden="true">&laquo;</span>
+                        </a>
+                    </li>
+                {% endif %}
+
+
+
+                {% if booklength > 1 %}
+                    {% for i in range(1,booklength + 1) %}
+                        <li><a href="/api/test_books?page={{ i }}">{{ i }}</a></li>
+                    {% endfor %}
+                {% else %}
+                    <li><a href="#">{{ 1 }}</a></li>
+                {% endif %}
+
+
+                {% if p < booklength %}
+                    <li>
+                        <a href="/api/test_books?page={{ p + 1 }}" aria-label="Next">
+                            <span aria-hidden="true">&raquo;</span>
+                        </a>
+                    </li>
+                {% else %}
+                    {#实现末尾的时候置灰#}
+                    <li>
+                        <a href="javascript:return false;" style="opacity: 0.2" aria-label="Next">
+                            <span aria-hidden="true">&raquo;</span>
+                        </a>
+                    </li>
+                {% endif %}
+
+            </ul>
+        </nav>
+
+    </div>
+
+{% endblock %}
+
+{% block js %}
+{% endblock %}
+
+
+
+
+
+

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% extends "bases.html" %}
+
+{% block head %}
+    {{ super() }}
+    <title>发表文章</title>
+{% endblock %}
+
+
+{% block content %}
+    <table>
+        <tr>
+            <td><img src="{{ user.avatar }}"></td>
+            <td><h2>{{ user.username }}</h2></td>
+        </tr>
+    </table>
+
+    <hr>
+    {% for post in posts %}
+        <table>
+            <tr>
+                <td><img src="{{ post.avatar }}"></td>
+                <td>{{ post.username }} says:<b> {{ post.body }} </b></td>
+            </tr>
+        </table>
+    {% endfor %}
+
+{% endblock %}
+
+{% block js %}
+{% endblock %}
+
+
+
+</title>
+</head>
+<body>
+
+</body>
+</html>
